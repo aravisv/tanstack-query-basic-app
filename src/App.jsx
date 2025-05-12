@@ -1,4 +1,4 @@
-import { useQuery, useMutation } from "@tanstack/react-query";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import "./App.css";
 
 const POSTS = [
@@ -13,6 +13,8 @@ const POSTS = [
 ];
 
 function App() {
+  const queryClient = useQueryClient();
+
   const postsQuery = useQuery({
     queryKey: ["posts"],
     queryFn: () => wait(2000).then(() => [...POSTS]),
@@ -28,9 +30,12 @@ function App() {
         POSTS.push({ id: crypto.randomUUID(), title: a })
       );
     },
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["posts"],
+      });
+    },
   });
-
-  console.log({ newPostMutation });
 
   if (postsQuery.isLoading) {
     return <h3>Loading...</h3>;

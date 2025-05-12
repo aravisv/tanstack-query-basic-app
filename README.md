@@ -16,3 +16,6 @@ Steps:
 5. to check the posts getting updated, we can use devtools
    import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
    and just render that component in the main.jsx
+6. use the useQueryClient hook to get the query client in scope
+   then use that object to invalidate the queries by passing the query ids
+   this way the query will be marked as stale and new data will be fetched again
