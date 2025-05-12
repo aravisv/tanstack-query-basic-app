@@ -21,20 +21,37 @@ function App() {
     //   return Promise.reject("Error");
     // },
   });
-  console.log({ postsQuery });
+
+  const newPostMutation = useMutation({
+    mutationFn: (a) => {
+      return wait(2000).then(() =>
+        POSTS.push({ id: crypto.randomUUID(), title: a })
+      );
+    },
+  });
+
+  console.log({ newPostMutation });
+
   if (postsQuery.isLoading) {
     return <h3>Loading...</h3>;
   }
   if (postsQuery.isError) {
     return <pre>{JSON.stringify(postsQuery.error)}</pre>;
   }
-  console.log(postsQuery.data);
 
   return (
     <>
       {postsQuery.data?.map((post) => (
         <div key={post.id}>{post.title}</div>
       ))}
+      <button
+        disabled={newPostMutation.isPending}
+        onClick={() => {
+          newPostMutation.mutate("New Post");
+        }}
+      >
+        Add New Post
+      </button>
     </>
   );
 }

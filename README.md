@@ -9,3 +9,10 @@ Steps:
 3. create a query, pass queryKey and queryFn as 2 mandatory fields
    use the isLoading, isError status first. if neither,then we can use the data to render
    in case the async queryFn throws error, it will retry again few times, before the query's status - isError becomes true
+4. create a mutation function using useMutation. one argument is mandatory - mutationFn
+   it may or may not have variable - single variable or object
+   it also has states - isIdle, isPending, isSuccess, isError
+   returns data or error
+5. to check the posts getting updated, we can use devtools
+   import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+   and just render that component in the main.jsx
