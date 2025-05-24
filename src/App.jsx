@@ -37,8 +37,18 @@ function App() {
     },
   });
 
+  // console.log("Query status", {
+  //   status: postsQuery.status, // Only useful for initial fetch
+  //   isLoading: postsQuery.isLoading, // True only once
+  //   isFetching: postsQuery.isFetching, // Use this to detect background refetch
+  //   data: postsQuery.data,
+  // });
+
   if (postsQuery.isLoading) {
-    return <h3>Loading...</h3>;
+    return <h3>(initial) Loading...</h3>;
+  }
+  if (postsQuery.isFetching) {
+    return <h3>Refreshing data...</h3>;
   }
   if (postsQuery.isError) {
     return <pre>{JSON.stringify(postsQuery.error)}</pre>;
