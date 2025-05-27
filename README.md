@@ -26,3 +26,6 @@ Steps:
    this way the query will be marked as stale and new data will be fetched again
 7. updated code to add dummy apis, 2 posts components with same query
    when each component mounts, the query gets called again and data will be fetched
+8. add a stale time to override the default behaviour of query going to stale state immediately
+   with this, when we change the posts component, the query wont be called again
+   since the data is still fresh, until total of 2 mins
