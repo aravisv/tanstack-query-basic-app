@@ -24,3 +24,5 @@ Steps:
 6. use the useQueryClient hook to get the query client in scope
    then use that object to invalidate the queries by passing the query ids
    this way the query will be marked as stale and new data will be fetched again
+7. updated code to add dummy apis, 2 posts components with same query
+   when each component mounts, the query gets called again and data will be fetched
