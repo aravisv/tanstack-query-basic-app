@@ -29,3 +29,4 @@ Steps:
 8. add a stale time to override the default behaviour of query going to stale state immediately
    with this, when we change the posts component, the query wont be called again
    since the data is still fresh, until total of 2 mins
+9. use refetchInterval in query to fetch the query every certain period of time

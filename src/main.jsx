@@ -6,12 +6,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import "./index.css";
 import App from "./App.jsx";
 
-const queryClient = new QueryClient({
-  defaultOptions: {
-    // until 2 mins, the fetched query data will remain fresh
-    queries: { staleTime: 1000 * 60 * 2 },
-  },
-});
+const queryClient = new QueryClient();
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>

@@ -5,6 +5,7 @@ export default function PostsList2() {
   const postsQuery = useQuery({
     queryKey: ["posts"],
     queryFn: getPosts,
+    refetchInterval: 1000 * 5, //refetches every 5 seconds
   });
 
   if (postsQuery.status === "pending") return <h1>Loading...</h1>;
