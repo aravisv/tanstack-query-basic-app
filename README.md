@@ -30,3 +30,7 @@ Steps:
    with this, when we change the posts component, the query wont be called again
    since the data is still fresh, until total of 2 mins
 9. use refetchInterval in query to fetch the query every certain period of time
+10. enabled property in the useQuery gives the ability to enable or disable a query / call at a later point of time when certain conditon is met.
+    ex: subsequent api call / based on some user action
+11. use the queryClient from the context and prefetchQuery on hover of the first post button. so that the data will be cached.
+    when we go to the page first post, the content will load faster, because the data is already in cache.
