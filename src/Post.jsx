@@ -28,7 +28,7 @@ export default function Post({ id }) {
             ? "Loading User..."
             : userQuery.isError
             ? "Error Loading User"
-            : userQuery.data.name}
+            : userQuery?.data?.name}
         </small>
       </h1>
       <p>{postQuery.data.body}</p>

@@ -37,3 +37,6 @@ Steps:
 11. use the queryClient from the context and prefetchQuery on hover of the first post button. so that the data will be cached.
     when we go to the page first post, the content will load faster, because the data is already in cache.
 12. useMutation takes mutation function - which is a function which should return a promise, and other callback functions like onSuccess, onError, onSettled, onMutate. onMutate runs before calling the actual mutation function. what we return inside onMutate will be accessible via the other callback functions' context argument. ex: this can be used to rollback to previous data in case of error
+13. onSuccess of the usemutation, invalidate the query. especially useful if we already have a stale time set for the query
+    exact:true will match the exact query function rather than all the child queries following parent query key(s)
+14. setQueryData to update the cache locally itself onSuccess. so that the data is readily available without making an additional api call
